@@ -1,0 +1,17 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "None",
+        "outDir": "js/",
+        "outFile": "js/assetsplittext.js",
+        "removeComments": true,
+        "sourceMap": true,
+        "target": "es6"
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "ts/AssetSplitText.ts"
+    ]
+}

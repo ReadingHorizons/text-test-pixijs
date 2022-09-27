@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Test PixiJS</title>
+    <style>
+        @font-face{
+            font-family: "sweaterschoolrg";
+            src: url("assets/fonts/sweater_school_rg.ttf");
+        }
+
+        @font-face{
+            font-family: "cardedureg";
+            src: url("assets/fonts/cardedureg.ttf");
+        }
+
+        * {padding: 0; margin: 0}
+    </style>
+    <script src="./js/gsap-3.9.1.min.js"></script>
+    <script src="./js/pixi.js"></script>
+    <script src="./js/AssetSplitText.js"></script>
+</head>
+<body style="margin:0;">
+<!--<p style="font-family: sweaterschoolrg">Happy</p>-->
+<div style="width:1024px; display:flex; justify-content:space-around;">
+    <button onclick="highlight4To6()">Highlight 4-6</button>
+    <button onclick="highlight1And4()">highlight1And4</button>
+    <button onclick="highlight1()">Highlight 1</button>
+    <button onclick="fade()">Fade</button>
+    <button onclick="fade2To3()">Fade2-3</button>
+    <button onclick="decode()">Decode</button>
+</div>
+<script>
+
+    const app = new PIXI.Application({ backgroundColor:0xCCCCCC, width:1024, height:768 });
+    document.body.appendChild(app.view);
+
+    const splitTextField1 = new AssetSplitText("Hello");
+    splitTextField1.x = 100;
+    splitTextField1.y = 50;
+    app.stage.addChild(splitTextField1);
+    splitTextField1.create();
+
+    const textField = new PIXI.Text("Hello", new PIXI.TextStyle({
+        fontFamily: "Arial",
+        fontSize: 48,
+        fill: 0x00FF00
+    }));
+    textField.x = 100;
+    textField.y = 50;
+    textField.alpha = .5;
+    app.stage.addChild(textField);
+
+    const splitTextField2 = new AssetSplitText("Singing");
+    splitTextField2.x = 100;
+    splitTextField2.y = 150;
+    app.stage.addChild(splitTextField2);
+    splitTextField2.create();
+
+    function highlight4To6()
+    {
+        splitTextField2.highlight("4-6", 0x48cae7);
+    }
+
+    const splitTextField3 = new AssetSplitText("To run");
+    splitTextField3.x = 100;
+    splitTextField3.y = 250;
+    app.stage.addChild(splitTextField3);
+    splitTextField3.create();
+
+    function highlight1And4()
+    {
+        splitTextField3.highlight("1,4");
+    }
+
+    const splitTextField4 = new AssetSplitText("Hello");
+    splitTextField4.x = 100;
+    splitTextField4.y = 350;
+    splitTextField4.kerning = 20;
+    app.stage.addChild(splitTextField4);
+    splitTextField4.create();
+
+    const splitTextField5 = new AssetSplitText("Bicycle");
+    splitTextField5.textStyle = new PIXI.TextStyle({
+        fontFamily: "Times",
+        fontSize: 48,
+        fill: 0xe7b548
+    });
+    splitTextField5.x = 100;
+    splitTextField5.y = 450;
+    app.stage.addChild(splitTextField5);
+    splitTextField5.create();
+
+    function highlight1()
+    {
+        splitTextField5.highlight("1", 0x48cae7);
+    }
+
+
+    const splitTextField6 = new AssetSplitText("mad");
+    splitTextField6.textStyle = new PIXI.TextStyle({
+        fontFamily: "Tinsel",
+        fontSize: 48,
+        fill: 0xFF0000
+    });
+    splitTextField6.x = 100;
+    splitTextField6.y = 600;
+    app.stage.addChild(splitTextField6);
+    splitTextField6.create();
+
+    const splitTextField7 = new AssetSplitText("Hello");
+    splitTextField7.x = 450;
+    splitTextField7.y = 50;
+    app.stage.addChild(splitTextField7);
+    splitTextField7.create();
+
+    function fade()
+    {
+        splitTextField7.fade();
+    }
+
+    const splitTextField8 = new AssetSplitText("There");
+    splitTextField8.x = 450;
+    splitTextField8.y = 150;
+    app.stage.addChild(splitTextField8);
+    splitTextField8.create();
+
+    function fade2To3()
+    {
+        splitTextField8.fade("2-3");
+    }
+
+    const splitTextField9 = new AssetSplitText("bag");
+    splitTextField9.textStyle = new PIXI.TextStyle({
+        fontFamily: "sweaterschoolrg",
+        fontSize: 48,
+        fill: 0x000000
+    });
+    splitTextField9.kerning = 5;
+    splitTextField9.x = 450;
+    splitTextField9.y = 320;
+    app.stage.addChild(splitTextField9);
+    splitTextField9.create();
+
+    /*const loader = new PIXI.Loader();
+    loader.add("sweaterschool", "assets/fonts/sweater_school_rg.ttf");
+    loader.load((loader, resources) => {
+        const splitTextField9 = new AssetSplitText("bag");
+        splitTextField9.textStyle = new PIXI.TextStyle({
+            fontFamily: "sweaterschool",
+            fontSize: 48,
+            fill: 0x000000
+        });
+        splitTextField9.x = 450;
+        splitTextField9.y = 100;
+        app.stage.addChild(splitTextField9);
+        splitTextField9.create();
+    });*/
+
+    const splitTextField10 = new AssetSplitText("car");
+    splitTextField10.textStyle = new PIXI.TextStyle({
+        fontFamily: "sweaterschoolrg",
+        fontSize: 110,
+        fill: 0x000000
+    });
+    splitTextField10.kerning = 5;
+    splitTextField10.x = 450;
+    splitTextField10.y = 500;
+    app.stage.addChild(splitTextField10);
+    splitTextField10.create();
+
+
+    function decode()
+    {
+        splitTextField10.decode();
+    }
+
+
+
+    /*const defaultStyle = new PIXI.TextStyle({
+        fontFamily: "Arial",
+        fontSize: 24,
+        fill: 0x00FF00,
+        align: 'center',
+        wordWrap: false
+    });
+    const basicText = new PIXI.Text('How', defaultStyle);
+    basicText.x = 100;
+    basicText.y = 50;
+    console.log(basicText.data);
+    app.stage.addChild(basicText);*/
+
+    /*const style = new PIXI.TextStyle({
+        fontFamily: 'Arial',
+        fontSize: 36,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        fill: ['#ffffff', '#00ff99'], // gradient
+        stroke: '#4a1850',
+        strokeThickness: 5,
+        dropShadow: true,
+        dropShadowColor: '#000000',
+        dropShadowBlur: 4,
+        dropShadowAngle: Math.PI / 6,
+        dropShadowDistance: 6,
+        wordWrap: true,
+        wordWrapWidth: 440,
+        lineJoin: 'round',
+    });
+
+    const richText = new PIXI.Text('Rich text with a lot of options and across multiple lines', style);
+    richText.x = 50;
+    richText.y = 220;
+    app.stage.addChild(richText);*/
+
+    /*const skewStyle = new PIXI.TextStyle({
+        fontFamily: 'Arial',
+        dropShadow: true,
+        dropShadowAlpha: 0.8,
+        dropShadowAngle: 2.1,
+        dropShadowBlur: 4,
+        dropShadowColor: '0x111111',
+        dropShadowDistance: 10,
+        fill: ['#ffffff'],
+        stroke: '#004620',
+        fontSize: 60,
+        fontWeight: 'lighter',
+        lineJoin: 'round',
+        strokeThickness: 12,
+    });
+
+    const skewText = new PIXI.Text('SKEW IS COOL', skewStyle);
+    skewText.skew.set(0.65, -0.3);
+    skewText.anchor.set(0.5, 0.5);
+    skewText.x = 300;
+    skewText.y = 480;
+    app.stage.addChild(skewText);*/
+
+</script>
+</body>
+</html>
